@@ -1,8 +1,18 @@
 # -*- coding: utf-8 -*-
 import click
 import logging
+import os
 from pathlib import Path
 from dotenv import find_dotenv, load_dotenv
+
+# find .env automagically by walking up directories until it's found
+dotenv_path = find_dotenv()
+
+# load up the entries as environment variables
+load_dotenv(dotenv_path)
+
+aws_access_key = os.environ.get("AWS_ACCESS_KEY")
+aws_secret_key = os.environ.get("AWS_SECRET_KEY")
 
 
 @click.command()
